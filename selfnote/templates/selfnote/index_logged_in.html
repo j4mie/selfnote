@@ -1,0 +1,22 @@
+{% extends "selfnote/base.html" %}
+
+{% block body %}
+<p class="controls"><a href="/logout">logout</a></p>
+
+{% if error %}
+<p class="error">{{ error }}</p>
+{% endif %}
+
+<h3>New Note</h3>
+<form action="/notes/" method="post">
+<textarea name='content'></textarea>
+<input type="submit" name="submit" value="Save Note" class="button" />
+</form>
+
+<ul>
+{% for note in notes %}
+<li>{{ note.content|urlize }} ({{ note.created_at|timesince }} ago)</li>
+{% endfor %}
+</ul>
+
+{% endblock %}

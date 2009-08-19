@@ -1,0 +1,15 @@
+{% extends "selfnote/base.html" %}
+
+{% block body %}
+
+<form action="/login/" method="post">
+<label for="username">User name:</label>
+<input type="text" name="username" value="" id="username">
+<label for="password">Password:</label>
+<input type="password" name="password" value="" id="password">
+
+<input type="submit" value="login" class="button" />
+<input type="hidden" name="next" value="/" />
+</form>
+
+{% endblock %}
