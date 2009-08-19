@@ -19,6 +19,5 @@ urlpatterns = patterns('',
     (r'^static_media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_DOC_ROOT}),
     (r'^login/$',  login),
     (r'^logout/$', logout, {'next_page': '/'}),
-    (r'^notes/$', 'notes.views.notes'),
     (r'^$', 'notes.views.index'),
 )

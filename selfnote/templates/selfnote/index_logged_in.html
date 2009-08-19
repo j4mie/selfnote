@@ -1,22 +1,23 @@
 {% extends "selfnote/base.html" %}
 
 {% block body %}
-<p class="controls"><a href="/logout">logout</a></p>
 
-{% if error %}
-<p class="error">{{ error }}</p>
+{% if message %}
+<p class="{{ message.class }}">{{ message.content }}</p>
 {% endif %}
 
-<h3>New Note</h3>
-<form action="/notes/" method="post">
+<div class="note">
+<form action="" method="post" class="create_note">
 <textarea name='content'></textarea>
-<input type="submit" name="submit" value="Save Note" class="button" />
+<input type="submit" name="submit" value="Create" class="button" />
 </form>
+</div>
 
-<ul>
+<ul class="notes">
 {% for note in notes %}
-<li>{{ note.content|urlize }} ({{ note.created_at|timesince }} ago)</li>
+<li class="note {% cycle "odd" "even" %}">{{ note.content|urlize }} <span class="when">({{ note.created_at|timesince }} ago)</span></li>
 {% endfor %}
 </ul>
-
 {% endblock %}
+{% block controls %}<a href="/logout">logout</a> | {% endblock %}
+
