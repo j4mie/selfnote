@@ -2,6 +2,10 @@
 
 {% block body %}
 
+{% if form.errors %}
+<p class="error">Login failed, try again</p>
+{% endif %}
+
 <form action="/login/" method="post" class="login">
 <div>
 <label for="username">User name:</label>

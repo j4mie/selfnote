@@ -17,7 +17,7 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(admin.site.urls)),
     (r'^static_media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_DOC_ROOT}),
-    (r'^login/$',  login),
+    (r'^login/$',  login, {'template_name': 'selfnote/index_not_logged_in.html'}),
     (r'^logout/$', logout, {'next_page': '/'}),
     (r'^$', 'notes.views.index'),
 )
