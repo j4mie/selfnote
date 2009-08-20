@@ -1,4 +1,5 @@
 {% extends "selfnote/base.html" %}
+{% load notes_tags %}
 
 {% block body %}
 
@@ -15,7 +16,7 @@
 
 <ul class="notes">
 {% for note in notes %}
-<li class="note {% cycle "odd" "even" %}">{{ note.content|urlize }} <span class="when">({{ note.created_at|timesince }} ago)</span></li>
+<li class="note {% cycle "odd" "even" %}">{{ note.content|urlize|linebreaks|convert_to_nbsp }} <span class="when">({{ note.created_at|timesince }} ago)</span></li>
 {% endfor %}
 </ul>
 {% endblock %}
